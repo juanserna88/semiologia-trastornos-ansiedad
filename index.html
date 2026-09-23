@@ -145,6 +145,7 @@ ul.clean li::before{content:"";position:absolute;left:4px;top:17px;width:9px;hei
 .chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 16px;font:500 15px Poppins,sans-serif}
 .chip[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
 .chip-out{margin-top:16px;min-height:96px}
+#tocPairs .chip{border-radius:12px;text-align:left}
 
 /* Stepper HHA */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;position:relative}
@@ -273,6 +274,50 @@ blockquote{margin:24px 0 0;font:600 clamp(20px,2.6vw,28px)/1.35 Poppins,sans-ser
 .totop{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;
   background:var(--green);color:#04302b;border:0;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20;box-shadow:0 4px 14px rgba(0,0,0,.2)}
 .totop.show{opacity:1;pointer-events:auto}
+
+/* ---------- Mobile refinements ---------- */
+@media (max-width:640px){
+  body{font-size:17px}
+  .sec{padding:44px 18px}
+  .lead{font-size:18px}
+  .sec h3{font-size:20px;margin-top:34px}
+  .seg{display:grid;grid-template-columns:1fr;width:100%;border-radius:14px;padding:5px;gap:4px}
+  .seg button{border-radius:10px;text-align:left;padding:12px 14px;font-size:15px}
+  .panel{padding:18px}
+  .case{padding:20px 18px;font-size:17px}
+  .q{padding:18px}
+  .q .qq{font-size:17px}
+  .opt{font-size:16px;padding:11px 12px}
+  .stat .v{font-size:30px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats .stat{padding:14px}
+  .stat .l{font-size:14px}
+  .brow{grid-template-columns:96px 1fr 50px;gap:8px}
+  .check label{padding:10px 8px;font-size:16px;gap:10px}
+  .verdict{margin:8px 8px 0;font-size:15px}
+  .nt-row button{flex:1 1 calc(50% - 10px)}
+  .sim{padding:18px}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{padding:14px}
+  .step .o{font-size:17px}
+  .flow{font-size:14px}
+  .trio div{font-size:17px;padding:14px 16px}
+  details summary{padding:16px 18px;font-size:17px}
+  details .body{padding:0 18px 14px}
+  .flips{grid-template-columns:1fr 1fr;gap:10px}
+  .flip{height:104px}
+  .flip .f{font-size:15px;padding:12px}
+  .flip .b{font-size:16px;padding:12px}
+  .seg[data-tabs="sexo"]{grid-template-columns:1fr 1fr}
+  .seg[data-tabs="sexo"] button{text-align:center}
+  .sumtbl{min-width:0}
+  .sumtbl tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+  .sumtbl th,.sumtbl td{display:block;width:auto;padding:2px 0;border:0}
+  blockquote{font-size:20px}
+  .compare .def{font-size:19px}
+  .score .val{font-size:28px}
+  .totop{width:44px;height:44px;right:14px}
+}
 footer{padding:48px clamp(20px,5vw,72px);background:var(--teal);color:#b7d3c7;font-size:15px}
 footer b{color:#fff;font:600 17px Poppins,sans-serif}
 </style>
@@ -538,7 +583,7 @@ footer b{color:#fff;font:600 17px Poppins,sans-serif}
   <div class="kicker"><span class="num" style="background:var(--green);color:#04302b">3</span>Caso clínico</div>
   <h2>Enfermedad actual</h2>
   <div class="case" style="color:var(--ink)">
-    Paciente de 20 años que consulta al servicio de urgencias por cuadro de <mark>miedo persistente</mark> sin desencadenante identificable. Concomitantemente refiere malestar torácico descrito «como un vacío», <mark>palpitaciones, diaforesis y temblor fino</mark> en extremidades, acompañados de <mark>sensación de peligro inminente</mark>. Refiere que los síntomas son cada vez más persistentes y afectan su calidad de vida, con <mark>temor creciente a salir de casa</mark>. Como factor atenuante refiere el uso de alprazolam en dosis única. Niega factores agravantes.
+    Paciente de 20 años que consulta al servicio de urgencias por cuadro clínico de <mark>5 meses de evolución</mark> consistente en sensación de <mark>miedo persistente</mark> sin desencadenante identificable. Concomitantemente refiere malestar torácico descrito «como un vacío», <mark>palpitaciones, diaforesis y temblor fino</mark> en extremidades, acompañados de <mark>sensación de peligro inminente</mark>. Refiere que los síntomas son cada vez más persistentes y afectan su calidad de vida, con <mark>temor creciente a salir de casa</mark>. Como factor atenuante refiere el uso de alprazolam en dosis única. Niega factores agravantes. Debido a lo anterior consulta al servicio de urgencias.
   </div>
   <p class="lead" style="margin-top:28px">Responde las preguntas a partir de lo que acabas de repasar.</p>
   <div class="quiz" data-quiz="caso"></div>
@@ -1083,7 +1128,7 @@ footer b{color:#fff;font:600 17px Poppins,sans-serif}
     var h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
     pb.style.width=(p*100)+'%'; pct.textContent=Math.round(p*100)+'%';
     tt.classList.toggle('show',h.scrollTop>700);
-    var idx=0; secs.forEach(function(s,i){if(s.getBoundingClientRect().top<window.innerHeight*0.35)idx=i});
+    var idx=0; secs.forEach(function(s,i){if(s.getBoundingClientRect().top<window.innerHeight*0.4)idx=i});
     links.forEach(function(a,i){a.classList.toggle('on',i===idx)});
     ct.textContent=secs[idx].dataset.title==='Inicio'?'Trastornos de Ansiedad':secs[idx].dataset.title;
   }
