@@ -241,12 +241,12 @@ details summary .tag{font:600 13px Poppins,sans-serif;background:var(--teal);col
 
 /* Flip cards (phobias) */
 .flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:20px}
-.flip{perspective:800px;background:none;border:0;padding:0;height:118px}
-.flip .in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.flip{perspective:800px;background:none;border:0;padding:0;height:118px;display:block;width:100%}
+.flip .in{display:block;position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
 .flip[aria-pressed="true"] .in{transform:rotateY(180deg)}
 .flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;justify-content:center;padding:14px 16px;text-align:left}
 .flip .f{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff;font:600 17px/1.25 Poppins,sans-serif}
-.flip .f small{font:400 13px Barlow,sans-serif;color:var(--mint);margin-top:6px}
+.flip .f small{display:block;font:400 13px Barlow,sans-serif;color:var(--mint);margin-top:6px}
 .flip .b{background:var(--green);color:#04302b;transform:rotateY(180deg);font:600 18px/1.3 Poppins,sans-serif}
 @media (prefers-reduced-motion:reduce){.flip .b{transform:none;display:none}.flip[aria-pressed="true"] .b{display:flex}.flip[aria-pressed="true"] .f{display:none}}
 
